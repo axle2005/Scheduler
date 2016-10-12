@@ -6,8 +6,9 @@ author: ${developer}
 commands:
    ${project.artifactId}:
       description: Manage ${project.artifactId}
-
-permissions:
-    ${project.artifactId}.manage:
-        description: Manage ${project.artifactId}
-        default: op
+   scheduler:
+      description: Basic Scheduler Command
+      usage: /scheduler [save/reload]
+      permission: scheduler.manage
+      permission-message: You don't have scheduler.manage
+      aliases: schr 

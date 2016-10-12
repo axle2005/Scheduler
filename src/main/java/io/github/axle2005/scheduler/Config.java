@@ -34,30 +34,25 @@ public class Config {
 
 	}
 
-	@SuppressWarnings("null")
 	private void firstRun(FileConfiguration config) throws Exception {
 
-		
-		
 		config = this.config;
 		if (getFileName().equalsIgnoreCase("config.yml")) {
 			if (!ifPathExists("Name")) {
 				set("Name", "Scheduler");
-				set("ServerType","Spigot");
+				set("ServerType", "Spigot");
 				List<String> configList = new ArrayList<String>();
-				for(int i = 5; i <=60; i=i+5)
-				{
+				for (int i = 5; i <= 60; i = i + 5) {
 					List<String> defaults = Arrays.asList("Replace Text");
-					//String node = "ScheduledTasks"+i;
-					//configList.add(i+"");
+					// String node = "ScheduledTasks"+i;
+					// configList.add(i+"");
 					this.getConfig().set("ScheduledTasks", defaults);
-					
-					
+
 				}
-				//this.getConfig().set("Interval."+configList, defaults);
+				// this.getConfig().set("Interval."+configList, defaults);
 			}
-		} 
-	
+		}
+
 		save();
 	}
 
@@ -138,7 +133,7 @@ public class Config {
 	public List getStringList(String path) {
 		return getConfig().getList(path);
 	}
-	
+
 	public String getStringValue(String path) {
 		return getConfig().getString(path);
 	}

@@ -9,18 +9,43 @@ public class CommandExec implements CommandExecutor {
 	private Scheduler plugin;
 	Config config;
 	Logger log = Logger.getLogger("Minecraft");
-	
-	CommandExec (Scheduler plugin) {
+
+	CommandExec(Scheduler plugin) {
 		this.plugin = plugin;
 	}
-	
-	//For some stupid reason it wont @Override - Come back to this. 
+
+	CommandExec(Scheduler plugin, Config config) {
+		this.plugin = plugin;
+		this.config = config;
+	}
+
+	// For some stupid reason it wont @Override - Come back to this.
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		// TODO Auto-generated method stub
-		return false;
+
+		if (cmd.getName().equalsIgnoreCase("scheduler")) {
+			if (args[0] != null) {
+				if (args[0].equalsIgnoreCase("save")) {
+					config.set("Counter", plugin.list_counter);
+					config.save();
+					return true;
+				} else if (args[0].equalsIgnoreCase("reload")) {
+					config.reload();
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+					
+			}
+		}
+
+			return false;
+	
+			
+
 	}
-
-
 
 }
